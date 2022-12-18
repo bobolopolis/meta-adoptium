@@ -32,3 +32,5 @@ RDEPENDS:${PN} = " \
     libxtst \
     zlib \
 "
+
+INSANE_SKIP:${PN} += "ldflags"
