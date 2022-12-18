@@ -3,12 +3,9 @@ HOMEPAGE = "https://adoptium.net"
 LICENSE = "GPL-2.0-with-classpath-exception"
 LIC_FILES_CHKSUM = "file://NOTICE;md5=8fa9e85281110769de025562c085b3a4"
 
-COMPATIBLE_HOST = "x86_64.*-linux"
+include temurin.inc
 
-PV_MAJOR = "${@d.getVar('PV').split('.')[0]}"
-PV_UNDER = "${@d.getVar('PV').replace('+', '_')}"
-
-SRC_URI = "https://github.com/adoptium/temurin${PV_MAJOR}-binaries/releases/download/jdk-${PV}/OpenJDK${PV_MAJOR}U-jre_x64_linux_hotspot_${PV_UNDER}.tar.gz"
+SRC_URI = "https://github.com/adoptium/temurin${PV_MAJOR}-binaries/releases/download/jdk-${PV}/OpenJDK${PV_MAJOR}U-jre_${JAVA_ARCH}_linux_hotspot_${PV_UNDER}.tar.gz"
 SRC_URI[sha256sum] = "11326464a14b63e6328d1d2088a23fb559c0e36b3f380e4c1f8dcbe160a8b95e"
 
 S = "${WORKDIR}/jdk-${PV}-jre"
