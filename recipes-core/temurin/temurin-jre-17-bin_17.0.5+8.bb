@@ -1,44 +1,21 @@
 SUMMARY = "Temurin JRE Binaries"
-HOMEPAGE = "https://adoptium.net"
-LICENSE = "GPL-2.0-with-classpath-exception"
-LIC_FILES_CHKSUM = "file://NOTICE;md5=8fa9e85281110769de025562c085b3a4"
 
 include temurin.inc
 
 SRC_URI = "https://github.com/adoptium/temurin${PV_MAJOR}-binaries/releases/download/jdk-${PV}/OpenJDK${PV_MAJOR}U-jre_${JAVA_ARCH}_linux_hotspot_${PV_UNDER}.tar.gz"
-SRC_URI[sha256sum] = "11326464a14b63e6328d1d2088a23fb559c0e36b3f380e4c1f8dcbe160a8b95e"
+JRE_SHA256:aarch64 = "34d6414710db27cd7760fe369135f3b9927ccc81410280606613166d4106d60a"
+JRE_SHA256:x86-64 = "11326464a14b63e6328d1d2088a23fb559c0e36b3f380e4c1f8dcbe160a8b95e"
+SRC_URI[sha256sum] = "${JRE_SHA256}"
 
 S = "${WORKDIR}/jdk-${PV}-jre"
 
 inherit update-alternatives
 
-do_configure[noexec] = "1"
-do_compile[noexec] = "1"
-
-JRE_HOME = "${libdir}/jvm/${BPN}"
-
 ALTERNATIVE_PRIORITY = "100"
 
 ALTERNATIVE:${PN} = "java keytool"
 ALTERNATIVE_LINK_NAME[java] = "${bindir}/java"
-ALTERNATIVE_TARGET[java] = "${JRE_HOME}/bin/java"
+ALTERNATIVE_TARGET[java] = "${JAVA_HOME}/bin/java"
 
 ALTERNATIVE_LINK_NAME[keytool] = "${bindir}/keytool"
-ALTERNATIVE_TARGET[keytool] = "${JRE_HOME}/bin/keytool"
-
-do_install() {
-    install -d ${D}${JRE_HOME}
-    cp -r ${S}/* ${D}${JRE_HOME}
-}
-
-FILES:${PN} = "${JRE_HOME}"
-RDEPENDS:${PN} = " \
-    alsa-lib \
-    freetype \
-    libx11 \
-    libxext \
-    libxi \
-    libxrender \
-    libxtst \
-    zlib \
-"
+ALTERNATIVE_TARGET[keytool] = "${JAVA_HOME}/bin/keytool"
