@@ -9,7 +9,7 @@ PV_MAJOR = "${@d.getVar('PV').split('.')[0]}"
 PV_UNDER = "${@d.getVar('PV').replace('+', '_')}"
 
 SRC_URI = "https://github.com/adoptium/temurin${PV_MAJOR}-binaries/releases/download/jdk-${PV}/OpenJDK${PV_MAJOR}U-jdk_x64_linux_hotspot_${PV_UNDER}.tar.gz"
-SRC_URI[sha256sum] = "482180725ceca472e12a8e6d1a4af23d608d78287a77d963335e2a0156a020af"
+SRC_URI[sha256sum] = "a0b1b9dd809d51a438f5fa08918f9aca7b2135721097f0858cf29f77a35d4289"
 
 S = "${WORKDIR}/jdk-${PV}"
 
