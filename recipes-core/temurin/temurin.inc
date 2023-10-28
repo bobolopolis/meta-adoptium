@@ -1,6 +1,6 @@
 HOMEPAGE = "https://adoptium.net"
 LICENSE = "GPL-2.0-with-classpath-exception"
-LIC_FILES_CHKSUM = "file://NOTICE;md5=8fa9e85281110769de025562c085b3a4"
+LIC_FILES_CHKSUM = "file://NOTICE;md5=0118abc27c1406bf05d7617cc4db30c9"
 
 COMPATIBLE_HOST = "(aarch64|arm|powerpc64le|x86_64).*-linux"
 # Binaries are linked with glibc
